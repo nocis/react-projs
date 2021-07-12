@@ -1,0 +1,18 @@
+.audioTimeline {
+  height: inherit;
+  background: #3a3b3c;
+  cursor: pointer;
+  width: inherit;
+  position: relative;
+
+  .bar {
+    height: inherit;
+    background: #506f43;
+    position: absolute;
+  }
+
+  .bar--buffered {
+    opacity: 0.3;
+    transition: width 0.5s;
+  }
+}

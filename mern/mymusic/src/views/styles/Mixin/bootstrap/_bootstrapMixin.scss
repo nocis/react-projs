@@ -1,0 +1,9 @@
+// @param {string} $float [left]
+// @param {number} $gutter [$grid-gutter-size]
+//
+@mixin grid-column($float: left, $gutter: $grid-gutter-size) {
+  $half-gutter: $gutter / 2;
+  position: relative;
+  padding-left: $half-gutter;
+  padding-right: $half-gutter;
+}

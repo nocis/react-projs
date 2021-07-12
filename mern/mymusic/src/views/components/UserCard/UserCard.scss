@@ -1,0 +1,67 @@
+@import "../../styles/shared";
+
+.content__header {
+  padding-top: 3rem;
+  margin-bottom: 4rem;
+  padding-bottom: 2rem;
+  min-height: 15rem;
+  color: #7d7e7f;
+  background: #1d1e1f;
+  width: 100%;
+
+  .usercard {
+    max-width: $grid-max-width;
+    margin: 0 auto;
+
+    @media (max-width: 480px) {
+      max-width: 380px;
+    }
+
+    padding: 0 1.5rem;
+    h1 {
+      color: #d6d6d6;
+      font-size: 3.6rem;
+      font-weight: 300;
+      white-space: nowrap;
+      word-wrap: normal;
+      margin-bottom: 2rem;
+    }
+
+    .user__statics {
+      @include makeGrid(4, 2rem, false);
+      grid-template-areas: templateRow(
+        (1, "tracks", 1, "likes", 1, "followers", 1, "following")
+      );
+
+      .user__tracks {
+        grid-area: tracks;
+      }
+      .user__likes {
+        grid-area: likes;
+      }
+      .user__followers {
+        grid-area: followers;
+      }
+      .user__following {
+        grid-area: following;
+      }
+
+      h2 {
+        font-size: 1.2rem;
+        line-height: 1.5;
+        font-weight: 100;
+        border-bottom: 1px solid #363738;
+      }
+
+      h2.active {
+        border-bottom: 1px solid #9a5b45;
+      }
+
+      .statics__value {
+        font-size: 2rem;
+        line-height: 1.5;
+        color: #aaabac;
+      }
+    }
+  }
+}

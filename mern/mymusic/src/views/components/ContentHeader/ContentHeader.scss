@@ -1,0 +1,32 @@
+@import "../../styles/shared";
+
+.content__header {
+  padding-top: 3rem;
+  margin-bottom: 4rem;
+  min-height: 15rem;
+  color: #7d7e7f;
+  background: #1d1e1f;
+  width: 100%;
+
+  .content__section {
+    max-width: $grid-max-width;
+    margin: 0 auto;
+    padding-left: 1.5rem;
+    @media (max-width: 480px) {
+      max-width: 380px;
+    }
+    h4 {
+      font-weight: 100;
+    }
+
+    h1 {
+      color: #d6d6d6;
+      font-size: 3rem;
+      font-weight: 300;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      word-wrap: normal;
+    }
+  }
+}

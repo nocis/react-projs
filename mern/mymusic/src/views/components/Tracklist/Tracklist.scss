@@ -1,0 +1,36 @@
+@import "../../styles/shared";
+
+.cardlist {
+  max-width: $grid-max-width;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  margin-bottom: 10rem;
+
+  @include makeGrid(4, 1rem, false);
+  grid-template-areas: templateRow((1, "a", 1, "b", 1, "c", 1, "d"));
+  @media (max-width: 480px) {
+    max-width: 380px;
+    @include makeGrid(1, 0rem, false);
+    grid-template-areas: templateRow((1, "a"));
+  }
+
+  grid-auto-rows: max-content;
+  grid-auto-flow: row;
+}
+
+.cardlist--full {
+  max-width: $grid-max-width;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  margin-bottom: 10rem;
+
+  @media (max-width: 480px) {
+    max-width: 380px;
+  }
+
+  @include makeGrid(1, 0rem, false);
+  grid-template-areas: templateRow((1, "a"));
+
+  grid-auto-rows: max-content;
+  grid-auto-flow: row;
+}

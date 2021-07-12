@@ -1,0 +1,36 @@
+@mixin makeGrid($colNum: 12, $gap: 1rem, $blank: true) {
+  display: grid;
+  grid-column-gap: $gap;
+  align-items: center;
+
+  @if $blank {
+    grid-template-columns: $gap repeat($colNum, 1fr) $gap;
+  } @else {
+    grid-template-columns: repeat($colNum, 1fr);
+  }
+
+  @media (min-width: 960px) {
+    grid-column-gap: $gap * 1.5;
+    justify-content: space-between;
+    @if $blank {
+      grid-template-columns:
+        auto repeat($colNum, minmax(0px, 100% / $colNum))
+        auto;
+    } @else {
+      grid-template-columns: repeat($colNum, minmax(0px, 100% / $colNum));
+    }
+  }
+}
+
+@function templateRow($list) {
+  $resultString: "";
+  @for $i from 1 through length($list) {
+    @if $i % 2 != 0 {
+      $count: nth($list, $i);
+      @for $j from 1 through $count {
+        $resultString: $resultString + " " + nth($list, $i + 1);
+      }
+    }
+  }
+  @return $resultString;
+}

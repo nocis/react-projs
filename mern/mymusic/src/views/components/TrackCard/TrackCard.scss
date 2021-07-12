@@ -1,0 +1,154 @@
+@import "../../styles/shared";
+
+article.trackCard--compact {
+  width: 100%;
+  margin-bottom: 5rem;
+  background-color: #1d1e1f;
+
+  .card__timeline {
+    // block eles always take full line, which means they must have width property other than auto!!!!!
+    // Thus children of them always can set width as x%!!!!!
+    height: 10px;
+  }
+
+  .card__main {
+    margin: 0 1.5rem;
+
+    .card__username {
+      padding-top: 1rem;
+      color: #7d7e7f;
+      font-weight: 100;
+      font-size: 1.5rem;
+      line-height: 1.5;
+    }
+
+    .card__title {
+      color: #bdbebf;
+      font-weight: 100;
+      font-size: 1.5rem;
+      line-height: 1.5;
+      padding-bottom: 4rem;
+    }
+  }
+
+  .card__actions {
+    padding-bottom: 2rem;
+    color: #4d4e4f;
+    fill: #4d4e4f;
+    font-size: 1.3rem;
+
+    .btn {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+
+    @include makeGrid(6, 0.5rem, false);
+    grid-template-areas: templateRow((1, "play", 4, "length", 1, "launch"));
+
+    .btn--play {
+      margin-left: -0.75rem;
+      justify-self: left;
+      grid-area: play;
+    }
+    .length {
+      justify-self: left;
+      grid-area: length;
+    }
+    .btn--launch {
+      justify-self: right;
+      grid-area: launch;
+    }
+  }
+}
+
+article.trackCard--compact:before {
+  width: inherit;
+  height: 1px;
+  background-color: transparent;
+  content: "";
+  display: block;
+  position: relative;
+  top: -20px;
+  border-top: 1px solid #ffffff23;
+}
+
+article.trackCard--full {
+  position: relative;
+  width: 96rem;
+  height: 24rem;
+  margin-bottom: 3rem;
+  background-color: #1d1e1f;
+
+  @include makeGrid(12, 0rem, false);
+  grid-template-areas: templateRow((3, "cover", 9, "main"));
+
+  .card__cover {
+    grid-area: cover;
+    height: 100%;
+  }
+
+  .card__main {
+    height: 100%;
+    grid-area: main;
+    margin: 0 1.5rem;
+
+    .card__username {
+      padding-top: 1rem;
+      color: #7d7e7f;
+      font-weight: 100;
+      font-size: 1.5rem;
+      line-height: 1.5;
+    }
+
+    .card__title {
+      color: #bdbebf;
+      font-weight: 100;
+      font-size: 1.5rem;
+      line-height: 1.5;
+      padding-bottom: 1rem;
+    }
+
+    .card__wave {
+      height: 12rem;
+      margin-bottom: 2rem;
+    }
+  }
+
+  .card__actions {
+    padding-bottom: 2rem;
+    color: #4d4e4f;
+    fill: #4d4e4f;
+    font-size: 1.3rem;
+
+    .btn {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+
+    @include makeGrid(6, 0.5rem, false);
+    grid-template-areas: templateRow((1, "play", 4, "length", 1, "launch"));
+
+    .btn--play {
+      margin-left: -0.75rem;
+      justify-self: left;
+      grid-area: play;
+    }
+    .length {
+      justify-self: left;
+      grid-area: length;
+    }
+    .btn--launch {
+      justify-self: right;
+      grid-area: launch;
+    }
+  }
+}
+
+/*
+height: 100% will match the height of the element's parent, regardless of the parent's height value.
+
+height: inherit will, as the name implies, inherit the value from it's parent. 
+If the parent's value is height: 50%, then the child will also be 50% of the height of it's parent. 
+If the parent's size is defined in absolute values (e.g. height: 50px), 
+then height: inherit and height: 100% will have the same behaviour for the child.
+*/

@@ -1,0 +1,139 @@
+@import "../../styles/shared";
+
+.header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 100;
+
+  /* offset-x | offset-y | blur-radius | spread-radius | color */
+  box-shadow: 0 3px 5px 0px rgba(0, 0, 0, 0.08);
+
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  width: 100%;
+  min-height: 6rem;
+  background: $base-background-color;
+
+  #navBar {
+    max-width: $grid-max-width;
+    height: 6rem;
+    margin: 0 auto;
+
+    @include makeGrid();
+    grid-template-areas: templateRow(
+      (1, ".", 8, "title", 1, ".", 3, "actions", 1, ".")
+    );
+    @media (max-width: 480px) {
+      max-width: 380px;
+      @include makeGrid(12, 0.8rem, true);
+      grid-template-areas: templateRow(
+        (1, ".", 6, "title", 1, ".", 5, "actions", 1, ".")
+      );
+    }
+
+    #header__title {
+      h1 {
+        font-weight: 100;
+        font-size: 2rem;
+      }
+
+      grid-area: title;
+      justify-self: left;
+      align-self: center;
+      line-height: 2 * $base-line-height;
+    }
+
+    #header__actions {
+      fill: $base-font-color;
+      grid-area: actions;
+      ul {
+        @include makeGrid(3, 0rem, false);
+        grid-template-areas: templateRow(
+          (1, "search", 1, "SoundCloud", 1, "github")
+        );
+        justify-items: center;
+
+        li {
+          width: 100%;
+          height: 100%;
+          border-left: 1px solid #38393a;
+          list-style: none;
+          text-align: center;
+
+          &:first-of-type {
+            border: none;
+          }
+
+          button {
+            width: 2.5rem;
+            height: 2.5rem;
+          }
+        }
+      }
+    }
+  }
+
+  .searchBar {
+    max-width: $grid-max-width;
+    margin: 0 auto;
+    height: 0;
+    overflow: hidden;
+    transition: height 160ms ease-in-out;
+  }
+
+  .searchBar--open {
+    height: 9rem;
+    padding-left: 1rem;
+    @media (max-width: 480px) {
+      max-width: 380px;
+    }
+    //=====================================
+    //  Search Form
+    //-------------------------------------
+    .search-form {
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+
+      .search-form__input {
+        outline: none;
+        border: 0;
+        padding: 0;
+        width: 100%;
+        height: 65px;
+        color: #f0f0f0;
+        font-family: inherit;
+        //rem(30px) function we do not have yet!!!!
+        font-size: 3rem;
+        font-weight: 300;
+        background: transparent;
+
+        &::placeholder {
+          color: #999;
+          opacity: 1; // firefox native placeholder style has opacity < 1
+        }
+
+        &:focus::placeholder {
+          color: #777;
+          opacity: 1;
+        }
+
+        // webkit input doesn't inherit font-smoothing from ancestors
+        -webkit-font-smoothing: antialiased;
+
+        // remove `x`
+        &::-ms-clear {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+/*
+priority!!!!
+id>class>type
+
+Type selectors (e.g., h1) and pseudo-elements (e.g., ::before).
+Class selectors (e.g., .example), attributes selectors (e.g., [type="radio"]) and pseudo-classes (e.g., :hover).
+ID selectors (e.g., #example).
+
+*/
